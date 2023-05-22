@@ -1,16 +1,9 @@
-import json 
-import time
-import requests
-import pandas as pd 
-from tqdm import tqdm
-from bs4 import BeautifulSoup
-from datetime import datetime, timezone
-
-from database_crud import CRUD
-db = CRUD()
+from utils import *
 
 
-def getLottoWinInfo(minDrwNo, maxDrwNo): 
+def getLottoWinInfo(minDrwNo : int, maxDrwNo : int) -> None: 
+    db = CRUD()
+
     drwtNo1 = [] 
     drwtNo2 = [] 
     drwtNo3 = [] 
@@ -78,7 +71,7 @@ def getLottoWinInfo(minDrwNo, maxDrwNo):
     # return df_lotto
 
 
-def total_croling():
+def total_croling() -> None:
     latest_url = "https://dhlottery.co.kr/gameResult.do?method=byWin&drwNo="
     latest_html = requests.get(latest_url)
     latest_soup = BeautifulSoup(latest_html.text, 'html.parser')
@@ -88,7 +81,7 @@ def total_croling():
     getLottoWinInfo(1, int(latest_time))
 
 
-def latest_croling():
+def latest_croling() -> None:
     latest_url = "https://dhlottery.co.kr/gameResult.do?method=byWin&drwNo="
     latest_html = requests.get(latest_url)
     latest_soup = BeautifulSoup(latest_html.text, 'html.parser')

@@ -1,7 +1,7 @@
 from database_init import Databases
 
 class CRUD(Databases):
-    def insertDB(self,schema,table,colum,data):
+    def insertDB(self, schema : str, table : str, colum : str, data : str):
         sql = f" INSERT INTO {schema}.\"{table}\"({colum}) VALUES ({data}) ;"
         try:
             self.cursor.execute(sql)
@@ -12,7 +12,7 @@ class CRUD(Databases):
             Databases.__del__(self)
             Databases.__init__(self)
     
-    def readDB(self,schema,table,colum):
+    def readDB(self, schema : str, table : str, colum : str):
         sql = f" SELECT {colum} FROM {schema}.\"{table}\""
         try:
             self.cursor.execute(sql)
@@ -24,7 +24,7 @@ class CRUD(Databases):
         
         return result
 
-    def updateDB(self,schema,table,colum,value,condition):
+    def updateDB(self, schema : str, table : str, colum : str, value : str, condition : str):
         sql = f" UPDATE {schema}.\"{table}\" SET {colum}='{value}' WHERE {colum}='{condition}' "
         try :
             self.cursor.execute(sql)
@@ -34,7 +34,7 @@ class CRUD(Databases):
             Databases.__del__(self)
             Databases.__init__(self)
 
-    def deleteDB(self,schema,table,condition):
+    def deleteDB(self, schema : str, table : str, condition : str):
         sql = f" delete from {schema}.\"{table}\" where {condition} ; "
         try :
             self.cursor.execute(sql)

@@ -1,29 +1,11 @@
-# import json 
-# import time
-# import math
-# import requests
-import numpy as np
-import pandas as pd
-from tqdm import tqdm
-# from bs4 import BeautifulSoup
-# from datetime import datetime, timezone
-
-import tensorflow as tf
-from keras import layers
-from keras import models
-from tensorflow import keras
-from keras.models import Sequential
-from keras.layers import Dense, LSTM
-from sklearn.preprocessing import MinMaxScaler
-
-# gpu 자동 할당
-tf.config.set_soft_device_placement(True)
-tf.debugging.set_log_device_placement(True)
-
-from read_database import *
+from utils import *
+from data_loader import data_loader
 
 
 def train_lstm():
+    # 데이터 로드
+    x_samples, y_samples, train_idx, val_idx, test_idx = data_loader()
+
     # 모델을 정의합니다.
     model = keras.Sequential([
         keras.layers.LSTM(128, batch_input_shape=(1, 1, 45), return_sequences=False, stateful=True),

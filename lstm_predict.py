@@ -1,26 +1,5 @@
-# import json 
-# import time
-# import math
-# import requests
-import numpy as np
-# import pandas as pd
-# from tqdm import tqdm
-# from bs4 import BeautifulSoup
-# from datetime import datetime, timezone
-
-import tensorflow as tf
-from keras import layers
-from keras import models
-from tensorflow import keras
-from keras.models import Sequential
-from keras.layers import Dense, LSTM
-from sklearn.preprocessing import MinMaxScaler
-
-# gpu 자동 할당
-tf.config.set_soft_device_placement(True)
-tf.debugging.set_log_device_placement(True)
-
-from read_database import *
+from utils import *
+from data_loader import data_loader
 
 
 # 번호 뽑기
@@ -50,6 +29,9 @@ def gen_numbers_from_probability(nums_prob):
 
 
 def predict_lstm():
+    # 데이터 로드
+    x_samples, y_samples, train_idx, val_idx, test_idx = data_loader()
+
     model = tf.keras.models.load_model("models/lstm.h5")
 
     xs = x_samples[-1].reshape(1, 1, 45)

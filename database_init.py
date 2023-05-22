@@ -1,8 +1,9 @@
-import psycopg2
+from utils import *
+
 
 class Databases():
     def __init__(self):
-        self.db = psycopg2.connect(host='localhost', dbname='LottoDB',user='admin',password='admin221225!@',port=15432)
+        self.db = psycopg2.connect(host='localhost', dbname='LottoDB', user='admin', password='admin221225!@', port=15432)
         self.cursor = self.db.cursor()
 
     def __del__(self):
