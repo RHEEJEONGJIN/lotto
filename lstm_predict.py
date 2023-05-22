@@ -36,7 +36,7 @@ def predict_lstm():
 
     xs = x_samples[-1].reshape(1, 1, 45)
     ys_pred = model.predict_on_batch(xs)
-
+    print(ys_pred[0])
     numbers = gen_numbers_from_probability(ys_pred[0])
     numbers.sort()
 

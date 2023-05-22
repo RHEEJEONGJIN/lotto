@@ -25,7 +25,7 @@ def ohbin2numbers(ohbin):
 
 def data_loader() -> list:
     """
-    list -> [x_samples, y_samples, train_idx, val_idx, test_idx]
+    list -> [x_samples, y_samples, train_idx, val_idx]
     """
     db = CRUD()
     # DB에서 데이터 불러오기
@@ -46,8 +46,7 @@ def data_loader() -> list:
     y_samples = ohbins[1:row_count]
 
     # 데이터 나누기
-    train_idx = (0, int(row_count*0.8))
-    val_idx = (int(row_count*0.8)+1, int(row_count*0.8)+int(row_count*0.1))
-    test_idx = (int(row_count*0.8)+int(row_count*0.1)+1, len(x_samples))
+    train_idx = (0, int(row_count*0.9))
+    val_idx = (int(row_count*0.9)+1, len(x_samples))
 
-    return [x_samples, y_samples, train_idx, val_idx, test_idx]
+    return [x_samples, y_samples, train_idx, val_idx]

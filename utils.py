@@ -24,3 +24,4 @@ from sklearn.preprocessing import MinMaxScaler
 tf.config.set_soft_device_placement(True)
 tf.debugging.set_log_device_placement(True)
 
+
