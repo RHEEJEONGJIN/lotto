@@ -4,7 +4,7 @@ from data_loader import data_loader
 
 def train_lstm():
     # 데이터 로드
-    x_samples, y_samples, train_idx, val_idx, test_idx = data_loader()
+    x_samples, y_samples, train_idx, val_idx = data_loader()
 
     # 모델을 정의합니다.
     model = keras.Sequential([
