@@ -30,13 +30,13 @@ def gen_numbers_from_probability(nums_prob):
 
 def predict_lstm():
     # 데이터 로드
-    x_samples, y_samples, train_idx, val_idx, test_idx = data_loader()
+    x_samples, y_samples, train_idx, val_idx = data_loader()
 
     model = tf.keras.models.load_model("models/lstm.h5")
 
     xs = x_samples[-1].reshape(1, 1, 45)
     ys_pred = model.predict_on_batch(xs)
-    print(ys_pred[0])
+    # print(ys_pred[0])
     numbers = gen_numbers_from_probability(ys_pred[0])
     numbers.sort()
 
